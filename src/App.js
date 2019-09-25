@@ -77,7 +77,7 @@ export default class App extends Component {
         </h3>
 
                             <h1>
-                                Sign up to get your chance of winning<br />10.000 Giftcard!
+                                Sign up to get your chance of winning<br />10.000 Coins Giftcard!
         </h1>
 
                             <div className="col-md-6 col-md-offset-3 mt">
