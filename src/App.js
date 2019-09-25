@@ -44,56 +44,56 @@ export default class App extends Component {
         if (success) {
             return (
                 <div>
-                <h2>Thanks for signing up!</h2>
-            </div>
-        )
+                    <h2>Thanks for signing up!</h2>
+                </div>
+            )
         }
 
         return (
             <form onSubmit={handler}>
-            <input
-        type="email"
-        name="email"
-        className="sign-up"
-        ref={input => this.email = input}
-        placeholder="Enter your email address..."
-        required
-        />
-        <button className="btn btn-lg btn-green sign-up-button" type="submit">
-            {buttonText}
-            </button>
+                <input
+                    type="email"
+                    name="email"
+                    className="sign-up"
+                    ref={input => this.email = input}
+                    placeholder="Enter your email address..."
+                    required
+                />
+                <button className="btn btn-lg btn-green sign-up-button" type="submit">
+                    {buttonText}
+                </button>
             </form>
-    )
+        )
     }
     render() {
         return (
             <div className="App">
-            <div className="landing-page">
-            <div className='backdrop'></div>
-            <div className='container'>
-            <div className="row centered">
-            <h3 className="logo aligncenter">
-            Netlify functions landing page example
+                <div className="landing-page">
+                    <div className='backdrop'></div>
+                    <div className='container'>
+                        <div className="row centered">
+                            <h3 className="logo aligncenter">
+                                Apex Legends Coins Giveaway
         </h3>
 
-        <h1>
-        Sign up to get notified<br/>when we launch!
+                            <h1>
+                                Sign up to get your chance of winning<br />10.000 Giftcard!
         </h1>
 
-        <div className="col-md-6 col-md-offset-3 mt">
-            {this.renderForm()}
-    </div>
-        </div>
+                            <div className="col-md-6 col-md-offset-3 mt">
+                                {this.renderForm()}
+                            </div>
+                        </div>
 
-        <div className="row">
-            <div className="continue">
-            <i className="ion-chevron-down"></i>
+                        <div className="row">
+                            <div className="continue">
+                                <i className="ion-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </div>
-            </div>
-            </div>
-            </div>
-    )
+        )
     }
 }
 
