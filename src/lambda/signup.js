@@ -50,6 +50,7 @@ module.exports.handler = (event, context, callback) => {
         if (error) {
             callback(error, null)
         }
+        console.log(body)
         const bodyObj = JSON.parse(body);
 
         console.log("Mailchimp body: " + JSON.stringify(bodyObj));
