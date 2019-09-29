@@ -2,7 +2,6 @@ const request = require("request");
 
 const getResponseAPI = process.env.GETRESPONSE_API_KEY;
 const getResponselistID = process.env.GETRESPONSE_LIST_ID;
-// const mcRegion = process.env.MAILCHIMP_REGION;
 
 module.exports.handler = (event, context, callback) => {
 
@@ -36,7 +35,7 @@ module.exports.handler = (event, context, callback) => {
     };
 
     const subscriber = JSON.stringify(data);
-    console.log("Sending data to mailchimp", subscriber);
+    console.log("Sending data to get respoonse", subscriber);
 
     request({
         method: "POST",
@@ -51,13 +50,28 @@ module.exports.handler = (event, context, callback) => {
             callback(error, null)
         }
         console.log(body)
+
+        if (!!body) {
+            callback(null, {
+                statusCode: 201,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Credentials": "true"
+                },
+                body: JSON.stringify({
+                    status: "saved email"
+                })
+            })
+        }
+
         const bodyObj = JSON.parse(body);
 
-        console.log("Mailchimp body: " + JSON.stringify(bodyObj));
+        console.log("get respoonse body: " + JSON.stringify(bodyObj));
         console.log("Status Code: " + response.statusCode);
 
         if (response.statusCode < 300 || (bodyObj.status === 400 && bodyObj.title === "Member Exists")) {
-            console.log("Added to list in Mailchimp subscriber list");
+            console.log("Added to list in get respoonse subscriber list");
             callback(null, {
                 statusCode: 201,
                 headers: {
@@ -70,7 +84,7 @@ module.exports.handler = (event, context, callback) => {
                 })
             })
         } else {
-            console.log("Error from mailchimp", bodyObj.detail);
+            console.log("Error from get respoonse", bodyObj.detail);
             callback(bodyObj.detail, null);
         }
 
