@@ -43,7 +43,7 @@ module.exports.handler = (event, context, callback) => {
         url: `https://api.getresponse.com/v3/contacts`,
         body: subscriber,
         headers: {
-            "Authorization": `api-key ${getResponseAPI}`,
+            "X-Auth-Token": `api-key ${getResponseAPI}`,
             "Content-Type": "application/json"
         }
     }, (error, response, body) => {
