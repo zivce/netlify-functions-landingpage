@@ -1,8 +1,8 @@
 const request = require("request");
 
-const mailChimpAPI = process.env.MAILCHIMP_API_KEY;
-const mailChimpListID = process.env.MAILCHIMP_LIST_ID;
-const mcRegion = process.env.MAILCHIMP_REGION;
+const getResponseAPI = process.env.GETRESPONSE_API_KEY;
+const getResponselistID = process.env.GETRESPONSE_LIST_ID;
+// const mcRegion = process.env.MAILCHIMP_REGION;
 
 module.exports.handler = (event, context, callback) => {
 
@@ -29,9 +29,10 @@ module.exports.handler = (event, context, callback) => {
     }
 
     const data = {
-        email_address: email,
-        status: "subscribed",
-        merge_fields: {}
+        campaign: {
+            campaignId: getResponselistID
+        },
+        email: email
     };
 
     const subscriber = JSON.stringify(data);
@@ -39,10 +40,10 @@ module.exports.handler = (event, context, callback) => {
 
     request({
         method: "POST",
-        url: `https://${mcRegion}.api.mailchimp.com/3.0/lists/${mailChimpListID}/members`,
+        url: `https://api.getresponse.com/v3/contacts`,
         body: subscriber,
         headers: {
-            "Authorization": `apikey ${mailChimpAPI}`,
+            "Authorization": `api-key ${getResponseAPI}`,
             "Content-Type": "application/json"
         }
     }, (error, response, body) => {
@@ -73,5 +74,5 @@ module.exports.handler = (event, context, callback) => {
         }
 
     });
-    
+
 };
