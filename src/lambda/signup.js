@@ -22,7 +22,7 @@ module.exports.handler = (event, context, callback) => {
         callback(errorMessage);
     }
 
-    if (!mailChimpListID) {
+    if (!getResponselistID) {
         errorMessage = "No LIST_ID supplied";
         console.log(errorMessage);
         callback(errorMessage);
